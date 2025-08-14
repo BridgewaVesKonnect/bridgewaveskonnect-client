@@ -1,8 +1,9 @@
 import { Box, Button, Typography } from "@/src/html";
-
-const Heading = () => {
+import { forwardRef } from "react";
+const Heading = forwardRef<HTMLDivElement, {}>((_, ref) => {
    return (
       <Box
+         ref={ref}
          sx={{
             display: "flex",
             alignItems: "center",
@@ -114,12 +115,13 @@ const Heading = () => {
                   height: "auto",
                   objectFit: "contain",
                   marginTop: 85,
+                  opacity: 0.9,
                }}
-               src="https://www.abroadworks.com/wp-content/uploads/2024/11/hero.webp"
+               src="http://localhost:3000/static/images/business-network.png"
             />
          </Box>
       </Box>
    );
-};
+});
 
 export default Heading;

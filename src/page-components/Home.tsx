@@ -7,11 +7,17 @@ import {
    WhyChooseUs,
 } from "@/src/components";
 import { Semantic } from "@/src/layout";
+import { useRef } from "react";
 
 const Home = () => {
+   const headingRef = useRef<HTMLDivElement>(null);
    return (
-      <Semantic>
-         <Heading />
+      <Semantic
+         data={{
+            headingRef: headingRef,
+         }}
+      >
+         <Heading ref={headingRef} />
          <WhyChooseUs />
          <OurService />
          <HowItWorks />
