@@ -1,12 +1,58 @@
 import { AppBar, Box, Drawer, Link, Toolbar, Typography } from "@/src/html";
+import { useEffect, useState } from "react";
 
-const Semantic = ({ children }: { children: React.ReactNode }) => {
+const Semantic = ({
+   children,
+   data,
+}: {
+   children: React.ReactNode;
+   data: Record<string, React.RefObject<HTMLDivElement | null>>;
+}) => {
    const navLinks = [
       { name: "Home", href: "/" },
       { name: "About", href: "/about" },
       { name: "Contact", href: "/contact" },
       { name: "Carrer", href: "/carrer" },
    ];
+   const [navTheme, setNavTheme] = useState("#fff");
+
+   const scrollEventHandler: () => void = () => {
+      const headingRef = data.headingRef?.current;
+      if (headingRef) {
+         const rect = headingRef.getBoundingClientRect();
+         if (rect.bottom <= 15 && navTheme === "#fff") {
+            setNavTheme("#000");
+         } else {
+            setNavTheme("#fff");
+         }
+      }
+   };
+
+   const eventsHandlers = {
+      scroll: scrollEventHandler,
+      resize: () => {
+         console.log("Resize event triggered");
+      },
+   };
+
+   useEffect(() => {
+      Object.keys(eventsHandlers).forEach((event) => {
+         window.addEventListener(
+            event,
+            eventsHandlers[event as keyof typeof eventsHandlers],
+         );
+      });
+
+      return () => {
+         Object.keys(eventsHandlers).forEach((event) => {
+            window.removeEventListener(
+               event,
+               eventsHandlers[event as keyof typeof eventsHandlers],
+            );
+         });
+      };
+   }, []);
+
    return (
       <Box>
          <AppBar position="fixed" component={"div"}>
@@ -30,7 +76,8 @@ const Semantic = ({ children }: { children: React.ReactNode }) => {
                            fontFamily: "Raleway",
                            letterSpacing: "0.1rem",
                            textTransform: "uppercase",
-                           color: "text.primary",
+                           color: navTheme,
+                           transition: "color 0.3s ease-in-out",
                         }}
                      >
                         bridgewaveskonnect
@@ -43,11 +90,12 @@ const Semantic = ({ children }: { children: React.ReactNode }) => {
                            href={link.href}
                            style={{
                               textDecoration: "none",
-                              color: "text.primary",
+                              color: navTheme,
                               fontFamily: "Raleway",
                               fontWeight: 500,
                               fontSize: "1.2rem",
                               letterSpacing: "0.05rem",
+                              transition: "color 0.3s ease-in-out",
                            }}
                         >
                            {link.name}

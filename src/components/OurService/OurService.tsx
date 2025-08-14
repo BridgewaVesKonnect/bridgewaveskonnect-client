@@ -5,7 +5,7 @@ const OurService = () => {
          sx={{
             width: "100%",
             height: "100%",
-            maxWidth: "70%",
+            maxWidth: "95%",
             margin: "0 auto",
             backgroundColor: "background.default",
             borderRadius: "12px",

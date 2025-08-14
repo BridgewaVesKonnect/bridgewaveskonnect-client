@@ -1,6 +1,47 @@
 import { Box, Typography } from "@/src/html";
-
+import {
+   AccessTime,
+   AttachMoney,
+   EmojiPeople,
+   Group,
+   RocketLaunch,
+   Schedule,
+} from "@mui/icons-material";
 const WhyChooseUs = () => {
+   const items = [
+      {
+         title: "Skilled Talent Pool",
+         icon: <Group fontSize="medium" color="primary" />,
+         description:
+            "Our VAs are college-educated, fluent in English, and trained for global business needs.",
+      },
+      {
+         title: "Cost-Effective Solutions",
+         icon: <AttachMoney fontSize="medium" color="primary" />,
+         description: "Save on labor costs without compromising quality.",
+      },
+      {
+         title: "Flexible Support",
+         icon: <AccessTime fontSize="medium" color="primary" />,
+         description: "Part-time, full-time, or project-based—your choice.",
+      },
+      {
+         title: "24/7 Availability",
+         icon: <Schedule fontSize="medium" color="primary" />,
+         description: "Time zone flexibility to match your business hours.",
+      },
+      {
+         title: "Experienced Leadership",
+         icon: <EmojiPeople fontSize="medium" color="primary" />,
+         description:
+            "Our management brings years of expertise in leadership and VA team handling, ensuring client satisfaction and long-term growth.",
+      },
+      {
+         title: "No Setup Fee",
+         icon: <RocketLaunch fontSize="medium" color="primary" />,
+         description: "Get started with zero upfront costs!",
+      },
+   ];
    return (
       <Box
          sx={{
@@ -49,34 +90,7 @@ const WhyChooseUs = () => {
                marginTop: "35px",
             }}
          >
-            {[
-               {
-                  title: "Skilled Talent Pool",
-                  description:
-                     "Our VAs are college-educated, fluent in English, and trained for global business needs.",
-               },
-               {
-                  title: "Cost-Effective Solutions",
-                  description: "Save on labor costs without compromising quality.",
-               },
-               {
-                  title: "Flexible Support",
-                  description: "Part-time, full-time, or project-based—your choice.",
-               },
-               {
-                  title: "24/7 Availability",
-                  description: "Time zone flexibility to match your business hours.",
-               },
-               {
-                  title: "Experienced Leadership",
-                  description:
-                     "Our management brings years of expertise in leadership and VA team handling, ensuring client satisfaction and long-term growth.",
-               },
-               {
-                  title: "No Setup Fee",
-                  description: "Get started with zero upfront costs!",
-               },
-            ].map((item, index) => (
+            {items.map((item, index) => (
                <Box
                   key={index}
                   sx={{
@@ -89,20 +103,29 @@ const WhyChooseUs = () => {
                         boxShadow: "0 6px 12px rgba(0, 0, 0, 0.1)",
                      },
                   }}
-                  className="bg-slate-50"
                >
-                  <Typography
+                  <Box
                      sx={{
-                        fontSize: "1.5rem",
-                        fontWeight: 600,
-                        color: "text.secondary",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "start",
+                        gap: 2,
                         marginBottom: "10px",
-                        fontFamily: "Open Sans",
-                        letterSpacing: "0.02rem",
                      }}
                   >
-                     {item.title}
-                  </Typography>
+                     <Typography
+                        sx={{
+                           fontSize: "1.5rem",
+                           fontWeight: 600,
+                           color: "text.secondary",
+                           fontFamily: "Open Sans",
+                           letterSpacing: "0.02rem",
+                        }}
+                     >
+                        {item.title}
+                     </Typography>
+                     {item.icon}
+                  </Box>
                   <Typography
                      variant="body2"
                      sx={{
