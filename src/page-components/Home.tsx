@@ -1,5 +1,6 @@
 import {
    AboutUs,
+   BookConsultation,
    Footer,
    Heading,
    HowItWorks,
@@ -22,6 +23,7 @@ const Home = () => {
          <OurService />
          <HowItWorks />
          <AboutUs />
+         <BookConsultation />
          <Footer />
       </Semantic>
    );

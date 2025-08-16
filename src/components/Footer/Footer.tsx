@@ -1,15 +1,23 @@
 import { Box, Typography } from "@/src/html";
-import { Email, Facebook, Language, LinkedIn, Phone } from "@mui/icons-material";
+import { Email, Facebook, Language, LinkedIn } from "@mui/icons-material";
 import { Divider } from "@mui/material";
 
 const Footer = () => {
+   const faceBookRedirect = () => {
+      window.open("https://www.facebook.com/share/16ogjtkGyL/", "_blank");
+   };
    return (
       <Box
+         id="footer"
          component="footer"
          sx={{
             width: "100%",
             backgroundColor: "#f8fafc",
-            padding: "40px 30px",
+            padding: {
+               xs: "20px 15px",
+               ms: "20px 15px",
+               md: "40px 30px",
+            },
             boxSizing: "border-box",
             textAlign: "center",
          }}
@@ -17,7 +25,15 @@ const Footer = () => {
          <Box
             sx={{
                display: "flex",
-               justifyContent: "space-between",
+               flexDirection: {
+                  xs: "column",
+                  sm: "column",
+                  md: "row",
+               },
+               justifyContent: {
+                  sm: "center",
+                  md: "space-between",
+               },
                alignItems: "center",
                marginBottom: "30px",
             }}
@@ -26,8 +42,14 @@ const Footer = () => {
                sx={{
                   display: "flex",
                   flexDirection: "column",
-                  justifyContent: "start",
-                  alignItems: "start",
+                  justifyContent: {
+                     sm: "center",
+                     md: "start",
+                  },
+                  alignItems: {
+                     sm: "center",
+                     md: "start",
+                  },
                   gap: "10px",
                }}
             >
@@ -40,7 +62,7 @@ const Footer = () => {
                      fontFamily: "Open Sans",
                   }}
                >
-                  BRIDGEWAVESKONNECT
+                  BRIDGEWAVES KONNECT
                </Typography>
 
                <Typography
@@ -55,7 +77,17 @@ const Footer = () => {
                   Your partner in success, connecting you with the best virtual talent
                </Typography>
             </Box>
-            <Box sx={{ display: "flex", gap: "20px" }}>
+            <Box
+               sx={{
+                  display: "flex",
+                  gap: "20px",
+                  marginTop: {
+                     xs: 3,
+                     sm: 4,
+                     md: 0,
+                  },
+               }}
+            >
                <Box
                   sx={{
                      "display": "flex",
@@ -72,6 +104,7 @@ const Footer = () => {
                         backgroundColor: "background.primary",
                      },
                   }}
+                  onClick={faceBookRedirect}
                >
                   <Facebook sx={{ fontSize: "1.5rem", color: "text.primar" }} />
                </Box>
@@ -141,7 +174,7 @@ const Footer = () => {
                   </Typography>
                </Box>
 
-               <Box
+               {/* <Box
                   sx={{
                      display: "flex",
                      gap: "10px",
@@ -163,7 +196,7 @@ const Footer = () => {
                   >
                      +63 917 123 4567
                   </Typography>
-               </Box>
+               </Box> */}
                <Box
                   sx={{
                      display: "flex",
@@ -192,6 +225,11 @@ const Footer = () => {
                sx={{
                   flex: 1,
                   display: "flex",
+                  flexDirection: {
+                     xs: "column",
+                     sm: "column",
+                     md: "row",
+                  },
                   gap: "20px",
                   justifyContent: "end",
                   alignItems: "start",
@@ -202,8 +240,10 @@ const Footer = () => {
                      display: "flex",
                      flexDirection: "column",
                      gap: "15px",
-                     alignItems: { xs: "center", md: "flex-end" },
-                     marginRight: "70px",
+                     alignItems: { xs: "start", md: "flex-end" },
+                     marginRight: {
+                        md: "70px",
+                     },
                   }}
                >
                   <Typography
@@ -226,7 +266,8 @@ const Footer = () => {
                         display: "flex",
                         flexDirection: "column",
                         gap: "10px",
-                        alignItems: { xs: "center", md: "flex-end" },
+                        alignItems: { xs: "center", sm: "start", md: "flex-end" },
+                        width: "100%",
                      }}
                   >
                      <Typography
@@ -264,7 +305,10 @@ const Footer = () => {
                      display: "flex",
                      flexDirection: "column",
                      gap: "10px",
-                     alignItems: { xs: "center", md: "flex-end" },
+                     alignItems: { xs: "start", md: "flex-end" },
+                     marginRight: {
+                        md: "70px",
+                     },
                   }}
                >
                   <Typography
@@ -287,7 +331,8 @@ const Footer = () => {
                         display: "flex",
                         flexDirection: "column",
                         gap: "15px",
-                        alignItems: { xs: "center", md: "flex-end" },
+                        alignItems: { xs: "start", sm: "start", md: "flex-end" },
+                        width: "100%",
                      }}
                   >
                      <Typography
@@ -361,6 +406,83 @@ const Footer = () => {
                         }}
                      >
                         Data Policy
+                     </Typography>
+                  </Box>
+               </Box>
+               <Box
+                  sx={{
+                     display: "flex",
+                     flexDirection: "column",
+                     gap: "10px",
+                     alignItems: { xs: "start", sm: "start", md: "flex-end" },
+                  }}
+               >
+                  <Typography
+                     variant="h5"
+                     sx={{
+                        fontSize: "1.2rem",
+                        color: "text.hint",
+                        display: "flex",
+                        alignItems: "center",
+                        gap: "8px",
+                        fontWeight: 500,
+                        fontFamily: "Open Sans",
+                     }}
+                  >
+                     Locations
+                  </Typography>
+
+                  <Box
+                     sx={{
+                        display: "flex",
+                        flexDirection: "column",
+                        justifyContent: { xs: "start", sm: "start", md: "flex-end" },
+                        gap: "15px",
+                        alignItems: { xs: "start", sm: "start", md: "flex-end" },
+                     }}
+                  >
+                     <Typography
+                        variant="h5"
+                        sx={{
+                           fontSize: "1rem",
+                           color: "text.secondary",
+                           display: "flex",
+                           alignItems: "center",
+                           gap: "8px",
+                           fontWeight: 500,
+                           fontFamily: "Open Sans",
+                        }}
+                     >
+                        Philippines
+                     </Typography>
+                     <Typography
+                        variant="h5"
+                        sx={{
+                           fontSize: "1rem",
+                           color: "text.secondary",
+                           display: "flex",
+                           alignItems: "center",
+                           gap: "8px",
+                           fontWeight: 500,
+                           fontFamily: "Open Sans",
+                        }}
+                     >
+                        Canada
+                     </Typography>
+
+                     <Typography
+                        variant="h5"
+                        sx={{
+                           fontSize: "1rem",
+                           color: "text.secondary",
+                           display: "flex",
+                           alignItems: "center",
+                           gap: "8px",
+                           fontWeight: 500,
+                           fontFamily: "Open Sans",
+                        }}
+                     >
+                        Australia
                      </Typography>
                   </Box>
                </Box>

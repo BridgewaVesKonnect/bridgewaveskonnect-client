@@ -1,6 +1,7 @@
 import { AppBar, Box, Drawer, Link, Toolbar, Typography } from "@/src/html";
-import { useEffect, useState } from "react";
-
+import { Menu } from "@mui/icons-material";
+import IconButton from "@mui/material/IconButton";
+import { SyntheticEvent, useEffect, useState } from "react";
 const Semantic = ({
    children,
    data,
@@ -11,8 +12,8 @@ const Semantic = ({
    const navLinks = [
       { name: "Home", href: "/" },
       { name: "About", href: "/about" },
-      { name: "Contact", href: "/contact" },
-      { name: "Carrer", href: "/carrer" },
+      { name: "Contact Us", href: "/contact-us" },
+      { name: "Career", href: "/career" },
    ];
    const [navTheme, setNavTheme] = useState("#fff");
 
@@ -53,6 +54,27 @@ const Semantic = ({
       };
    }, []);
 
+   const onClickLinks = (event: SyntheticEvent, links: string) => {
+      const onSlide = ["/contact-us", "/about"];
+      if (onSlide.includes(links)) {
+         event.preventDefault();
+
+         if (links === "/about") {
+            const aboutUs = document.getElementById("aboutUs") as HTMLDivElement;
+            if (aboutUs) {
+               aboutUs.scrollIntoView({ behavior: "smooth", block: "center" });
+            }
+         }
+
+         if (links === "/contact-us") {
+            const contactUs = document.getElementById("footer") as HTMLDivElement;
+            if (contactUs) {
+               contactUs.scrollIntoView({ behavior: "smooth", block: "center" });
+            }
+         }
+      }
+   };
+
    return (
       <Box>
          <AppBar position="fixed" component={"div"}>
@@ -80,10 +102,19 @@ const Semantic = ({
                            transition: "color 0.3s ease-in-out",
                         }}
                      >
-                        bridgewaveskonnect
+                        bridgewaves konnect
                      </Typography>
                   </Box>
-                  <Box sx={{ display: "flex", gap: 6 }}>
+                  <Box
+                     sx={{
+                        display: {
+                           xs: "none",
+                           sm: "none",
+                           md: "flex",
+                        },
+                        gap: 6,
+                     }}
+                  >
                      {navLinks.map((link, index) => (
                         <Link
                            key={index}
@@ -97,11 +128,28 @@ const Semantic = ({
                               letterSpacing: "0.05rem",
                               transition: "color 0.3s ease-in-out",
                            }}
+                           onClick={(event) => onClickLinks(event, link.href)}
                         >
                            {link.name}
                         </Link>
                      ))}
                   </Box>
+                  <IconButton
+                     sx={{
+                        display: {
+                           xs: "block",
+                           sm: "block",
+                           md: "none",
+                        },
+                     }}
+                  >
+                     <Menu
+                        fontSize="medium"
+                        sx={{
+                           color: navTheme,
+                        }}
+                     />
+                  </IconButton>
                </Box>
             </Toolbar>
          </AppBar>

@@ -3,6 +3,7 @@ import { Box, Typography } from "@/src/html";
 const AboutUs = () => {
    return (
       <Box
+         id="aboutUs"
          sx={{
             width: "100%",
             height: "100%",

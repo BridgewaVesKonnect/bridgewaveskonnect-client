@@ -1,12 +1,26 @@
 import { Box, Button, Typography } from "@/src/html";
-import { forwardRef } from "react";
+import { forwardRef, SyntheticEvent } from "react";
 const Heading = forwardRef<HTMLDivElement, {}>((_, ref) => {
+   const bookConsultationHandler = (event: SyntheticEvent) => {
+      event.preventDefault();
+      // const bookConsultationSection = document.getElementById(
+      //    "bookConsultation",
+      // ) as HTMLDivElement;
+      // if (bookConsultationSection) {
+      //    bookConsultationSection.scrollIntoView({ behavior: "smooth", block: "center" });
+      // }
+   };
    return (
       <Box
          ref={ref}
          sx={{
             display: "flex",
             alignItems: "center",
+            flexDirection: {
+               xs: "column",
+               sm: "column",
+               md: "row",
+            },
             width: "100%",
             height: "100%",
             backgroundColor: "background.primary",
@@ -19,11 +33,21 @@ const Heading = forwardRef<HTMLDivElement, {}>((_, ref) => {
                flex: 1,
                display: "flex",
                flexDirection: "column",
-               justifyContent: "start",
-               alignItems: "start",
+               justifyContent: {
+                  xm: "center",
+                  sm: "center",
+                  md: "start",
+               },
+               alignItems: {
+                  xm: "center",
+                  sm: "center",
+                  md: "start",
+               },
                width: "100%",
                height: "100%",
-               maxWidth: "700px",
+               maxWidth: {
+                  md: "700px",
+               },
                marginRight: 2,
             }}
          >
@@ -37,6 +61,11 @@ const Heading = forwardRef<HTMLDivElement, {}>((_, ref) => {
                   letterSpacing: "0.1rem",
                   marginTop: 4,
                   color: "text.primary",
+                  textAlign: {
+                     xs: "center",
+                     sm: "center",
+                     md: "left",
+                  },
                }}
             >
                “Bridging gaps. Empowering your business with our Top 1% Filipino Virtual
@@ -52,6 +81,11 @@ const Heading = forwardRef<HTMLDivElement, {}>((_, ref) => {
                   letterSpacing: "0.05rem",
                   marginTop: 2,
                   color: "text.primary",
+                  textAlign: {
+                     xs: "center",
+                     sm: "center",
+                     md: "left",
+                  },
                }}
             >
                "Your partner in success, connecting you with the best virtual talent"
@@ -60,7 +94,11 @@ const Heading = forwardRef<HTMLDivElement, {}>((_, ref) => {
                sx={{
                   display: "flex",
                   flexDirection: "column",
-                  alignItems: "start",
+                  alignItems: {
+                     xs: "center",
+                     sm: "center",
+                     md: "start",
+                  },
                   marginTop: 3,
                   gap: 2,
                }}
@@ -75,6 +113,11 @@ const Heading = forwardRef<HTMLDivElement, {}>((_, ref) => {
                      letterSpacing: "0.05rem",
                      marginTop: 2,
                      color: "text.primary",
+                     textAlign: {
+                        xs: "center",
+                        sm: "center",
+                        md: "left",
+                     },
                   }}
                >
                   Get Started Today
@@ -90,6 +133,7 @@ const Heading = forwardRef<HTMLDivElement, {}>((_, ref) => {
                      fontSize: "1rem",
                      fontFamily: "Open Sans",
                   }}
+                  onClick={bookConsultationHandler}
                >
                   Book a Free Consultation
                </Button>
@@ -98,7 +142,11 @@ const Heading = forwardRef<HTMLDivElement, {}>((_, ref) => {
          <Box
             sx={{
                flex: 1,
-               display: "flex",
+               display: {
+                  xs: "none",
+                  sm: "none",
+                  md: "flex",
+               },
                justifyContent: "center",
                alignItems: "center",
                marginLeft: 4,
@@ -117,7 +165,7 @@ const Heading = forwardRef<HTMLDivElement, {}>((_, ref) => {
                   marginTop: 85,
                   opacity: 0.9,
                }}
-               src="http://localhost:3000/static/images/business-network.png"
+               src="https://bridgewaveskonnect.com/static/images/business-network.png"
             />
          </Box>
       </Box>

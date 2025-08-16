@@ -19,7 +19,20 @@ interface CustomTextFieldProps extends OutlinedTextFieldProps {
    fontSize?: number | string;
 }
 
-const CustomTextField = styled(MuiTextField, {})(({ theme }) => ({}));
+const CustomTextField = styled(
+   MuiTextField,
+   {},
+)(({ theme }) => ({
+   "width": "100%",
+   "color": theme.palette.text.secondary,
+   "fontSize": "1rem",
+   "fontFamily": "Open Sans",
+   "& .MuiInputBase-input": {
+      color: theme.palette.text.secondary,
+      fontSize: "1rem",
+      fontFamily: "Open Sans",
+   },
+}));
 
 const TextField = forwardRef<HTMLInputElement, CustomTextFieldProps>((props, ref) => {
    return <CustomTextField ref={ref} {...props} />;
