@@ -12,7 +12,7 @@ const Heading = forwardRef<HTMLDivElement, {}>((_, ref) => {
    };
    return (
       <Box
-         ref={ref}
+         id="heading"
          sx={{
             display: "flex",
             alignItems: "center",

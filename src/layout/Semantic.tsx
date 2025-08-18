@@ -1,14 +1,12 @@
 import { AppBar, Box, Drawer, Link, Toolbar, Typography } from "@/src/html";
 import { Menu } from "@mui/icons-material";
 import IconButton from "@mui/material/IconButton";
+import { usePathname } from "next/navigation";
 import { SyntheticEvent, useEffect, useState } from "react";
-const Semantic = ({
-   children,
-   data,
-}: {
-   children: React.ReactNode;
-   data: Record<string, React.RefObject<HTMLDivElement | null>>;
-}) => {
+
+const Semantic = ({ children }: { children: React.ReactNode }) => {
+   const pathname = usePathname();
+   console.log("router", pathname);
    const navLinks = [
       { name: "Home", href: "/" },
       { name: "About", href: "/about" },
@@ -18,7 +16,8 @@ const Semantic = ({
    const [navTheme, setNavTheme] = useState("#fff");
 
    const scrollEventHandler: () => void = () => {
-      const headingRef = data.headingRef?.current;
+      if (pathname === "/career") return;
+      const headingRef = document.querySelector("#heading");
       if (headingRef) {
          const rect = headingRef.getBoundingClientRect();
          if (rect.bottom <= 15 && navTheme === "#fff") {
@@ -35,6 +34,12 @@ const Semantic = ({
          console.log("Resize event triggered");
       },
    };
+
+   useEffect(() => {
+      if (pathname === "/career") {
+         setNavTheme("#388e3c");
+      }
+   }, [pathname]);
 
    useEffect(() => {
       Object.keys(eventsHandlers).forEach((event) => {
