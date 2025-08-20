@@ -152,7 +152,7 @@ const Heading = forwardRef<HTMLDivElement, {}>((_, ref) => {
                marginLeft: 4,
                width: "100%",
                height: "100%",
-               maxWidth: "400px",
+               maxWidth: "700px",
                margin: "0 auto",
             }}
          >
@@ -160,12 +160,12 @@ const Heading = forwardRef<HTMLDivElement, {}>((_, ref) => {
                alt="Hero Image"
                style={{
                   width: "100%",
-                  height: "auto",
+                  height: "100%",
                   objectFit: "contain",
                   marginTop: 85,
-                  opacity: 0.9,
+                  opacity: 0.5,
                }}
-               src="https://bridgewaveskonnect.com/static/images/business-network.png"
+               src="http://localhost:3000//static/images/heading.jpg"
             />
          </Box>
       </Box>

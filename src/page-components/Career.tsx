@@ -1,8 +1,10 @@
 import { Semantic } from "@/src/layout";
+import CircleIcon from "@mui/icons-material/Circle";
 import HomeWorkOutlinedIcon from "@mui/icons-material/HomeWorkOutlined";
 import InsertDriveFileOutlinedIcon from "@mui/icons-material/InsertDriveFileOutlined";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import LocationOnOutlinedIcon from "@mui/icons-material/LocationOnOutlined";
+import RadioButtonUncheckedIcon from "@mui/icons-material/RadioButtonUnchecked";
 import WorkIcon from "@mui/icons-material/Work";
 import WorkOutlineIcon from "@mui/icons-material/WorkOutline";
 import {
@@ -26,133 +28,272 @@ const Career = () => {
    const jobs = [
       {
          posted: "3 days ago",
-         title: "Client Success Specialist",
+         title: "Virtual Assistant for Senior Homes",
          experience: "2+ Years Experience",
-         jobTitle: "Client Success Specialist",
+         jobTitle: "Virtual Assistant for Senior Homes",
          location: "Philippines",
          typeOfWork: "Remote",
          jobType: "Full-Time",
          years: "2+ Years",
          overview: [
             {
-               jobTitle: "Client Success Specialist",
+               jobTitle: "Virtual Assistant for Senior Homes",
                location: "Fully Remote, Philippines",
-               rate: "$4.00 – $6.00 per hour based on experience",
-               schedule: "Monday to Friday, Eastern Standard Time",
+               rate: "$5 per hour",
+               schedule:
+                  " 9 AM EST – 5 PM EST, or flexible shifts depending on senior home needs",
                jobType: "Full-Time",
             },
          ],
          jobDescription:
-            "As a Client Success Specialist, you will serve as the primary point of contact for our clients, ensuring their satisfaction with our staffing solutions. This role requires strong communication, relationship management, and problem-solving skills. The ideal candidate will be proactive, client-focused, and able to balance multiple accounts while ensuring our placed talent meets performance expectations.",
-         Requirements: [
-            "Proven experience in client relationship management, account management, or customer success— preferably in the staffing, BPO, or recruitment industry.",
-            "Strong understanding of the offshore hiring and staffing process.",
-            "Exceptional communication skills (verbal and written) with a client-focused approach.",
-            "Strong problem-solving skills and the ability to manage multiple priorities simultaneously.",
-         ],
-      },
-      {
-         posted: "1 week ago",
-         title: "Marketing Manager (Manufacturing)",
-         jobTitle: "Client Success Specialist",
-         experience: "3+ Years Experience",
-         location: "New York, USA",
-         typeOfWork: "On-site",
-         jobType: "Full-time",
-         years: "3+ Years",
-         overview: [
+            "We are seeking a Virtual Assistant (VA) to provide reliable, compassionate, and efficient support for senior homes. The VA will help with administrative tasks, communication, scheduling, and resident support to ensure smooth daily operations and improved quality of life for seniors and staff.",
+         keyResponsibilities: [
             {
-               jobTitle: "Marketing Manager",
-               location: "New York, USA",
-               rate: "$60,000 – $75,000 annually",
-               schedule: "Monday to Friday, 9 AM - 5 PM",
-               typeOfWork: "On-site",
+               title: "Administrative Support",
+               Requirements: [
+                  "Manage calendars, appointments, and reminders for residents and staff.",
+                  "Organize documents, records, and reports digitally.",
+                  "Assist in coordinating staff schedules and resident activities.",
+               ],
+            },
+            {
+               title: "Resident & Family Support",
+               Requirements: [
+                  "Answer inquiries from residents and family members promptly and professionally.",
+                  "Provide reminders for medication, meals, and daily routines.",
+                  "Assist residents with virtual communication tools (e.g., video calls, messages).",
+               ],
+            },
+            {
+               title: "Communication & Coordination",
+               Requirements: [
+                  "Act as a communication bridge between residents, families, and healthcare providers.",
+                  "Manage email, calls, and messages to ensure timely responses.",
+                  "Prepare and send newsletters or updates to families",
+               ],
+            },
+            {
+               title: "Operational Assistance",
+               Requirements: [
+                  "Support event planning and virtual activities for seniors.",
+                  "Track resident requests and escalate issues to staff when needed.",
+                  "Maintain confidentiality and compliance with privacy regulations.",
+               ],
             },
          ],
-         jobDescription:
-            "Lead marketing campaigns for our manufacturing products. Requires experience in B2B marketing, campaign strategy, and team leadership.",
-         Requirements: [
-            "3+ years experience in marketing management.",
-            "Strong analytical and project management skills.",
-            "Experience with digital marketing tools and platforms.",
+         Qualifications: [
+            "Proven experience as a Virtual Assistant, Administrative Assistant, or similar role.",
+            "Strong communication skills (verbal and written).",
+            "Tech-savvy with knowledge of scheduling tools, messaging apps, and video conferencing platforms.",
+            "Ability to multitask and prioritize efficiently.",
+            "High level of empathy, patience, and professionalism when dealing with seniors and families.",
+            "Knowledge of healthcare or eldercare settings is an asset.",
+            "Reliable internet connection and suitable home office setup.",
+         ],
+         keyPerformanceIndicators: [
+            {
+               title: "Efficiency & Responsiveness",
+               Requirements: [
+                  "Average response time to resident/family/staff requests.",
+                  "% of tasks completed within set deadlines.",
+               ],
+            },
+            {
+               title: "Resident & Family Satisfaction",
+               Requirements: [
+                  "Satisfaction rating from residents and families (via surveys/feedback).",
+                  "% of positive interactions handled without escalation.",
+               ],
+            },
+            {
+               title: "Operational Support",
+               Requirements: [
+                  "Number of administrative errors reduced (e.g., scheduling conflicts).",
+                  "% of resident reminders/notifications successfully delivered.",
+               ],
+            },
+            {
+               title: "Engagement & Adoption",
+               Requirements: [
+                  "Frequency of residents using VA services (calls, reminders, assistance).",
+                  "Staff time saved by delegating routine tasks to VA.",
+               ],
+            },
+            {
+               title: "Compliance & Confidentiality",
+               Requirements: [
+                  "% adherence to data privacy and confidentiality standards.",
+                  "Zero reported incidents of data breaches or mishandling",
+               ],
+            },
          ],
       },
       {
-         posted: "1 week ago",
-         title: "Operations Assistant",
+         posted: "3 days ago",
+         title: "Virtual Assistant – Administrative Assistant",
          experience: "2+ Years Experience",
-         jobTitle: "Operations Assistant",
-         location: "London, UK",
-         typeOfWork: "Hybrid",
-         jobType: "Part-time",
+         jobTitle: "Virtual Assistant – Administrative Assistant",
+         location: "Philippines",
+         typeOfWork: "Remote",
+         jobType: "Full-Time",
          years: "2+ Years",
          overview: [
             {
-               jobTitle: "Operations Assistant",
-               location: "London, UK",
-               rate: "£15 – £20 per hour",
-               schedule: "Flexible, 20 hours per week",
-               typeOfWork: "Hybrid",
+               jobTitle: "Virtual Assistant – Administrative Assistant",
+               location: "Fully Remote, Philippines",
+               rate: "$5 per hour",
+               schedule: "Flexible, based on employer’s needs",
+               jobType: "Full-Time",
             },
          ],
          jobDescription:
-            "Support daily operations including scheduling, data entry, and vendor coordination.",
-         Requirements: [
-            "Minimum 2 years experience in operations or administrative roles.",
-            "Excellent organizational skills.",
-            "Proficient with MS Office and scheduling software.",
+            "We are seeking a Virtual Assistant (Administrative Assistant) to provide remote administrative and organizational support. The ideal candidate is detail-oriented, proactive, and highly organized, capable of handling multiple tasks while maintaining professionalism and confidentiality.",
+         keyResponsibilities: [
+            {
+               title: "Administrative Support",
+               Requirements: [
+                  "Manage calendars, schedule meetings, and organize appointments",
+                  "Draft, edit, and manage emails, reports, and other documents.",
+                  "Prepare presentations and maintain digital filing systems.",
+               ],
+            },
+            {
+               title: "Data & Document Handling",
+               Requirements: [
+                  "Maintain accurate records, databases, and spreadsheets.",
+                  "Assist with data entry, reporting, and research tasks.",
+                  "Organize confidential information with discretion.",
+               ],
+            },
+            {
+               title: "Task & Project Coordination",
+               Requirements: [
+                  "Track progress on assigned projects and follow up on pending tasks.",
+                  "Support event planning, travel arrangements, and logistics.",
+                  "Ensure smooth day-to-day operations and timely task completion.",
+               ],
+            },
+         ],
+         Qualifications: [
+            "Proven experience as a Virtual Assistant, Administrative Assistant, or similar role.",
+            "Strong written and verbal communication skills.",
+            "Proficient in Microsoft Office Suite, Google Workspace, and scheduling tools.",
+            "Ability to multitask, prioritize, and meet deadlines.",
+            "High level of professionalism, discretion, and confidentiality.",
+            "Self-motivated with strong organizational and problem-solving skills.",
+         ],
+         keyPerformanceIndicators: [
+            {
+               title: "Efficiency & Responsiveness",
+               Requirements: ["% of tasks/projects completed on time."],
+            },
+            {
+               title: "Response Time",
+               Requirements: [
+                  "Average time to respond to emails, messages, and requests.",
+               ],
+            },
+            {
+               title: "Accuracy",
+               Requirements: [
+                  "Reduction in errors within documents, data entry, or scheduling.",
+               ],
+            },
+            {
+               title: "Stakeholder Satisfaction",
+               Requirements: ["Positive feedback from managers and team members."],
+            },
+            {
+               title: "Efficiency",
+               Requirements: [
+                  "Demonstrated ability to manage multiple priorities effectively",
+               ],
+            },
          ],
       },
       {
-         posted: "2 days ago",
-         title: "Software Engineer",
-         jobTitle: "Software Engineer",
-         experience: "4+ Years Experience",
-         location: "Remote",
-         jobType: "Remote",
+         posted: "3 days ago",
+         title: "VIRTUAL ASSISTANT FOR BOOKKEEPING SUPPORT",
+         experience: "2+ Years Experience",
+         jobTitle: "VIRTUAL ASSISTANT FOR BOOKKEEPING SUPPORT",
+         location: "Philippines",
          typeOfWork: "Remote",
-         years: "4+ Years",
+         jobType: "Full-Time",
+         years: "2+ Years",
          overview: [
             {
-               jobTitle: "Software Engineer",
-               location: "Remote",
-               rate: "$50 – $70 per hour",
-               schedule: "Flexible hours",
-               typeOfWork: "Remote",
+               jobTitle: "VIRTUAL ASSISTANT FOR BOOKKEEPING SUPPORT",
+               location: "Fully Remote, Philippines",
+               rate: "$5 per hour",
+               schedule: "Flexible, based on employer’s needs",
+               jobType: "Full-Time",
             },
          ],
          jobDescription:
-            "Develop and maintain web applications. Must be proficient in JavaScript, React, and Node.js.",
-         Requirements: [
-            "4+ years experience in software development.",
-            "Strong knowledge of JavaScript and frameworks.",
-            "Experience with REST APIs and cloud services.",
-         ],
-      },
-      {
-         posted: "5 days ago",
-         title: "Customer Support Representative",
-         jobTitle: "Customer Support Representative",
-         experience: "1+ Years Experience",
-         location: "Toronto, Canada",
-         typeOfWork: "On-site",
-         jobType: "Full-time",
-         years: "1+ Years",
-         overview: [
+            "We are seeking a Virtual Assistant specializing in bookkeeping support to assist with financial and administrative tasks. The role involves maintaining accurate records, supporting daily accounting functions, and ensuring smooth financial operations. This position is ideal for someone who is detail-oriented, organized, and confident with accounting tools.",
+         keyResponsibilities: [
             {
-               jobTitle: "Customer Support Representative",
-               location: "Toronto, Canada",
-               rate: "CAD 18 – 22 per hour",
-               schedule: "Monday to Friday, 8 AM - 4 PM",
-               typeOfWork: "On-site",
+               title: "Bookkeeping & Accounting Support",
+               Requirements: [
+                  "Record daily financial transactions (income, expenses, invoices, receipts).",
+                  "Maintain and reconcile accounts, ledgers, and financial data.",
+                  "Support preparation of monthly/quarterly financial reports.",
+               ],
+            },
+            {
+               title: "Accounts Management",
+               Requirements: [
+                  "Track accounts payable and receivable.",
+                  "Assist with preparing invoices and following up on outstanding payments.",
+                  "Support payroll preparation and expense reimbursements.",
+               ],
+            },
+            {
+               title: "Administrative & Financial Tasks",
+               Requirements: [
+                  "Organize financial documents and maintain filing systems.",
+                  "Assist with budget tracking and expense categorization",
+                  "Liaise with accountants, vendors, and clients as needed.",
+               ],
+            },
+            {
+               title: "Compliance & Accuracy",
+               Requirements: [
+                  "Ensure confidentiality of financial data",
+                  "Adhere to accounting standards and internal policies",
+                  "Minimize errors through consistent double-checking and reporting.",
+               ],
             },
          ],
-         jobDescription:
-            "Provide excellent customer support via phone, email, and chat. Handle inquiries, complaints, and product questions.",
-         Requirements: [
-            "1+ year experience in customer support.",
-            "Strong communication skills.",
-            "Ability to handle high volume of calls and maintain professionalism.",
+         Qualifications: [
+            "Proven experience as a Virtual Assistant, Bookkeeper, or similar role.",
+            "Proficiency in accounting software (e.g., QuickBooks, Xero, FreshBooks, or Wave).",
+            "Strong knowledge of spreadsheets (Excel, Google Sheets).",
+            "Attention to detail, accuracy, and strong organizational skills.",
+            "Ability to work independently and meet deadlines.",
+            "Familiarity with basic accounting principles.",
+         ],
+         keyPerformanceIndicators: [
+            {
+               title: "Accuracy Rate",
+               Requirements: ["% of error-free financial entries and reconciliations."],
+            },
+            {
+               title: "Timeliness",
+               Requirements: ["Completion of bookkeeping tasks within deadlines."],
+            },
+            {
+               title: "Compliance",
+               Requirements: ["Adherence to company and regulatory standards."],
+            },
+            {
+               title: "Efficiency",
+               Requirements: ["Number of financial tasks completed per week/month."],
+            },
+            {
+               title: "Stakeholder Satisfaction",
+               Requirements: ["Positive feedback from managers/accountants."],
+            },
          ],
       },
    ];
@@ -643,7 +784,7 @@ const Career = () => {
                            fontFamily: "Open Sans",
                         }}
                      >
-                        Job Description:
+                        Overview:
                      </Typography>
                      <Typography
                         sx={{
@@ -655,36 +796,200 @@ const Career = () => {
                      </Typography>
                   </Box>
 
-                  <Box mt={3}>
-                     <Typography
-                        variant="subtitle1"
-                        fontWeight="bold"
-                        sx={{
-                           color: "text.secondary",
-                           fontFamily: "Open Sans",
-                        }}
-                     >
-                        Requirements:
-                     </Typography>
-                     <List>
-                        {jobs[activeIndex].Requirements.map((item, index) => (
-                           <ListItem key={index}>
-                              <ListItemText
-                                 primary={
+                  {jobs[activeIndex].keyResponsibilities.length > 0 && (
+                     <Box mt={3}>
+                        <Typography
+                           variant="subtitle1"
+                           fontWeight="bold"
+                           sx={{
+                              color: "text.secondary",
+                              fontFamily: "Open Sans",
+                              fontSize: "1.2rem",
+                              fontStyle: "italic",
+                           }}
+                        >
+                           Key Responsibilities
+                        </Typography>
+                        {jobs[activeIndex].keyResponsibilities.map((section, index) => (
+                           <Box
+                              key={index}
+                              sx={{
+                                 marginLeft: 2,
+                              }}
+                           >
+                              <Typography
+                                 variant="subtitle1"
+                                 fontWeight="bold"
+                                 sx={{
+                                    color: "text.secondary",
+                                    fontFamily: "Open Sans",
+                                    fontSize: "1.2rem",
+                                    fontStyle: "italic",
+                                 }}
+                              >
+                                 {index + 1}. {section.title}
+                              </Typography>
+                              <List
+                                 sx={{
+                                    pl: 2,
+                                    py: "3px",
+                                 }}
+                              >
+                                 {section.Requirements.map((item, index) => (
+                                    <ListItem key={index} sx={{ py: "3px" }}>
+                                       <ListItemText
+                                          primary={
+                                             <Box
+                                                sx={{
+                                                   display: "flex",
+                                                   alignItems: "center",
+                                                   justifyContent: "start",
+                                                   gap: "10px",
+                                                }}
+                                             >
+                                                <RadioButtonUncheckedIcon
+                                                   sx={{
+                                                      color: "text.secondary",
+                                                      fontSize: "0.7rem",
+                                                   }}
+                                                />{" "}
+                                                <Typography
+                                                   sx={{
+                                                      color: "text.secondary",
+                                                      fontFamily: "Open Sans",
+                                                   }}
+                                                >
+                                                   {item}
+                                                </Typography>
+                                             </Box>
+                                          }
+                                       />
+                                    </ListItem>
+                                 ))}
+                              </List>
+                           </Box>
+                        ))}
+                     </Box>
+                  )}
+
+                  {jobs[activeIndex].Qualifications.length > 0 && (
+                     <Box mt={3}>
+                        <Typography
+                           variant="subtitle1"
+                           fontWeight="bold"
+                           sx={{
+                              color: "text.secondary",
+                              fontFamily: "Open Sans",
+                              fontSize: "1.2rem",
+                              fontStyle: "italic",
+                           }}
+                        >
+                           Qualifications:
+                        </Typography>
+                        <List sx={{ pl: 2, py: "3px" }}>
+                           {jobs[activeIndex].Qualifications.map((item, index) => (
+                              <ListItem key={index} sx={{ py: "3px" }}>
+                                 <ListItemText
+                                    primary={
+                                       <Box
+                                          sx={{
+                                             display: "flex",
+                                             alignItems: "center",
+                                             justifyContent: "start",
+                                             gap: "10px",
+                                          }}
+                                       >
+                                          <CircleIcon
+                                             sx={{
+                                                color: "text.secondary",
+                                                fontSize: "0.6rem",
+                                             }}
+                                          />{" "}
+                                          <Typography
+                                             sx={{
+                                                color: "text.secondary",
+                                                fontFamily: "Open Sans",
+                                             }}
+                                          >
+                                             {" "}
+                                             {item}
+                                          </Typography>
+                                       </Box>
+                                    }
+                                 />
+                              </ListItem>
+                           ))}
+                        </List>
+                     </Box>
+                  )}
+                  {jobs[activeIndex].keyPerformanceIndicators.length > 0 && (
+                     <Box mt={3}>
+                        <Typography
+                           variant="subtitle1"
+                           fontWeight="bold"
+                           sx={{
+                              color: "text.secondary",
+                              fontFamily: "Open Sans",
+                              fontSize: "1.2rem",
+                              fontStyle: "italic",
+                           }}
+                        >
+                           Key Performance Indicators (KPIs)
+                        </Typography>
+                        <List sx={{ pl: 2, py: "3px" }}>
+                           {jobs[activeIndex].keyPerformanceIndicators.map(
+                              (section, index) => (
+                                 <Box key={index}>
                                     <Typography
                                        sx={{
                                           color: "text.secondary",
                                           fontFamily: "Open Sans",
+                                          fontWeight: "bold",
                                        }}
                                     >
-                                       {item}
+                                       {index + 1}. {section.title}
                                     </Typography>
-                                 }
-                              />
-                           </ListItem>
-                        ))}
-                     </List>
-                  </Box>
+                                    {section.Requirements.map((item, index) => (
+                                       <ListItem
+                                          key={index}
+                                          sx={{ py: 0, paddingLeft: 4 }}
+                                       >
+                                          <ListItemText
+                                             primary={
+                                                <Box
+                                                   sx={{
+                                                      display: "flex",
+                                                      alignItems: "center",
+                                                      justifyContent: "start",
+                                                      gap: "10px",
+                                                   }}
+                                                >
+                                                   <CircleIcon
+                                                      sx={{
+                                                         color: "text.secondary",
+                                                         fontSize: "0.6rem",
+                                                      }}
+                                                   />{" "}
+                                                   <Typography
+                                                      sx={{
+                                                         color: "text.secondary",
+                                                         fontFamily: "Open Sans",
+                                                      }}
+                                                   >
+                                                      {" "}
+                                                      {item}
+                                                   </Typography>
+                                                </Box>
+                                             }
+                                          />
+                                       </ListItem>
+                                    ))}
+                                 </Box>
+                              ),
+                           )}
+                        </List>
+                     </Box>
+                  )}
                </Box>
             </Box>
          </Box>
