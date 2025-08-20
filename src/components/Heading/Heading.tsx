@@ -165,7 +165,7 @@ const Heading = forwardRef<HTMLDivElement, {}>((_, ref) => {
                   marginTop: 85,
                   opacity: 0.5,
                }}
-               src="http://localhost:3000//static/images/heading.jpg"
+               src="https://bridgewaveskonnect.com/static/images/heading.jpg"
             />
          </Box>
       </Box>
