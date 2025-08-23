@@ -24,7 +24,10 @@ export default function RootLayout({
                rel="stylesheet"
             />
 
-            <link rel="icon" href="http://localhost:3000/static/images/favicon.ico" />
+            <link
+               rel="icon"
+               href="https://bridgewaveskonnect.com/static/images/favicon.ico"
+            />
          </head>
          <body>
             <Provider>
