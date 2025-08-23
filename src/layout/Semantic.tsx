@@ -1,12 +1,14 @@
-import { AppBar, Box, Drawer, Link, Toolbar, Typography } from "@/src/html";
-import { Menu } from "@mui/icons-material";
+import { env } from "@/src/config";
+import { AppBar, Box, Drawer, Img, Link, Toolbar, Typography } from "@/src/html";
+import { State } from "@/src/state/store/store";
+import { Close, Menu } from "@mui/icons-material";
 import IconButton from "@mui/material/IconButton";
 import { usePathname } from "next/navigation";
 import { SyntheticEvent, useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 
 const Semantic = ({ children }: { children: React.ReactNode }) => {
    const pathname = usePathname();
-   console.log("router", pathname);
    const navLinks = [
       { name: "Home", href: "/" },
       { name: "About", href: "/about" },
@@ -15,49 +17,25 @@ const Semantic = ({ children }: { children: React.ReactNode }) => {
    ];
    const [navTheme, setNavTheme] = useState("#fff");
 
-   const scrollEventHandler: () => void = () => {
-      if (pathname === "/career") return;
-      const headingRef = document.querySelector("#heading");
-      if (headingRef) {
-         const rect = headingRef.getBoundingClientRect();
-         if (rect.bottom <= 15 && navTheme === "#fff") {
-            setNavTheme("#000");
-         } else {
-            setNavTheme("#fff");
-         }
-      }
-   };
+   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-   const eventsHandlers = {
-      scroll: scrollEventHandler,
-      resize: () => {
-         console.log("Resize event triggered");
-      },
-   };
+   const { scrollEvents } = useSelector((state: State) => state.ui);
 
    useEffect(() => {
       if (pathname === "/career") {
          setNavTheme("#388e3c");
+         return;
       }
-   }, [pathname]);
-
-   useEffect(() => {
-      Object.keys(eventsHandlers).forEach((event) => {
-         window.addEventListener(
-            event,
-            eventsHandlers[event as keyof typeof eventsHandlers],
-         );
-      });
-
-      return () => {
-         Object.keys(eventsHandlers).forEach((event) => {
-            window.removeEventListener(
-               event,
-               eventsHandlers[event as keyof typeof eventsHandlers],
-            );
-         });
-      };
-   }, []);
+      const headingRef = document.querySelector("#heading");
+      if (headingRef) {
+         const rect = headingRef.getBoundingClientRect();
+         if (rect.bottom <= 15 && navTheme === "#fff") {
+            setNavTheme("#388e3c");
+         } else if (rect.bottom > 15 && navTheme === "#388e3c") {
+            setNavTheme("#fff");
+         }
+      }
+   }, [scrollEvents, pathname, navTheme]);
 
    const onClickLinks = (event: SyntheticEvent, links: string) => {
       const onSlide = ["/contact-us", "/about"];
@@ -80,6 +58,11 @@ const Semantic = ({ children }: { children: React.ReactNode }) => {
       }
    };
 
+   const onClickMenu = (event: SyntheticEvent) => {
+      event.preventDefault();
+      setIsMenuOpen(!isMenuOpen);
+   };
+
    return (
       <Box>
          <AppBar position="fixed" component={"div"}>
@@ -93,22 +76,75 @@ const Semantic = ({ children }: { children: React.ReactNode }) => {
                      flexWrap: "wrap",
                   }}
                >
-                  <Box>
-                     <Typography
-                        variant="h6"
-                        component="div"
+                  <Box
+                     sx={{
+                        display: "flex",
+                        alignItems: "start",
+                        gap: 2,
+                     }}
+                  >
+                     <Box
                         sx={{
-                           fontWeight: "bold",
-                           fontSize: "1.5rem",
-                           fontFamily: "Raleway",
-                           letterSpacing: "0.1rem",
-                           textTransform: "uppercase",
-                           color: navTheme,
-                           transition: "color 0.3s ease-in-out",
+                           display: "flex",
+                           alignItems: "center",
+                           gap: 2,
+                           maxWidth: 55,
+                           maxHeight: 55,
+                           overflow: "hidden",
                         }}
                      >
-                        bridgewaves konnect
-                     </Typography>
+                        <Img
+                           alt="Bridgewaves Konnect"
+                           style={{
+                              width: "100%",
+                              height: "100%",
+                              objectFit: "contain",
+                           }}
+                           src={`${env.origin}/static/images/logo.webp`}
+                        />
+                     </Box>
+                     <Box
+                        sx={{
+                           display: "flex",
+                           flexDirection: "column",
+                           justifyContent: "center",
+                        }}
+                     >
+                        <Typography
+                           variant="h6"
+                           component="div"
+                           sx={{
+                              display: {
+                                 xs: "none",
+                                 sm: "none",
+                                 md: "block",
+                              },
+                              fontFamily: "Raleway",
+                              fontWeight: 600,
+                              fontSize: "1.5rem",
+                              color: "#b89425",
+                           }}
+                        >
+                           BridgewaVes Konnect
+                        </Typography>
+                        <Typography
+                           variant="h6"
+                           component="div"
+                           sx={{
+                              display: {
+                                 xs: "none",
+                                 sm: "none",
+                                 md: "block",
+                              },
+                              fontFamily: "Raleway",
+                              fontWeight: 300,
+                              fontSize: "0.9rem",
+                              color: navTheme,
+                           }}
+                        >
+                           Bridging gaps, Empowering growth.
+                        </Typography>
+                     </Box>
                   </Box>
                   <Box
                      sx={{
@@ -147,6 +183,7 @@ const Semantic = ({ children }: { children: React.ReactNode }) => {
                            md: "none",
                         },
                      }}
+                     onClick={onClickMenu}
                   >
                      <Menu
                         fontSize="medium"
@@ -159,22 +196,107 @@ const Semantic = ({ children }: { children: React.ReactNode }) => {
             </Toolbar>
          </AppBar>
          <Drawer
-            variant="permanent"
+            open={isMenuOpen}
+            onClose={onClickMenu}
+            variant="temporary"
             anchor="right"
+            role="presentation"
             sx={{
-               "display": "none",
-               "width": 240,
+               "width": 260,
                "flexShrink": 0,
                "& .MuiDrawer-paper": {
-                  width: 240,
+                  width: 260,
                   boxSizing: "border-box",
                },
             }}
-            open={false}
          >
-            <Toolbar />
-            <Box sx={{ overflow: "auto" }}>{/* Add your navigation items here */}</Box>
+            <Box sx={{ overflow: "auto" }}>
+               <Box
+                  sx={{
+                     display: "flex",
+                     justifyContent: "space-between",
+                     width: "100%",
+                     padding: "10px",
+                     boxSizing: "border-box",
+                     alignItems: "center",
+                     borderBottom: "1px solid #ccc",
+                  }}
+               >
+                  <Box
+                     sx={{
+                        display: "flex",
+                        flexDirection: "column",
+                        justifyContent: "start",
+                     }}
+                  >
+                     <Typography
+                        variant="h6"
+                        component="div"
+                        sx={{
+                           fontFamily: "Raleway",
+                           fontWeight: 600,
+                           fontSize: "0.9rem",
+                           color: "#b89425",
+                        }}
+                     >
+                        BridgewaVes Konnect
+                     </Typography>
+                     <Typography
+                        variant="h6"
+                        component="div"
+                        sx={{
+                           fontFamily: "Raleway",
+                           fontWeight: 300,
+                           fontSize: "0.7rem",
+                           color: "text.secondary",
+                        }}
+                     >
+                        Bridging gaps, Empowering growth.
+                     </Typography>
+                  </Box>
+                  <IconButton onClick={onClickMenu}>
+                     <Close
+                        fontSize="medium"
+                        sx={{
+                           color: "#000",
+                        }}
+                     />
+                  </IconButton>
+               </Box>
+               {navLinks.map((link, index) => (
+                  <Link
+                     key={index}
+                     href={link.href}
+                     style={{
+                        textDecoration: "none",
+                        display: "block",
+                        width: "100%",
+                        boxSizing: "border-box",
+                        padding: "10px 20px",
+                        borderBottom: "1px solid #ccc",
+                     }}
+                     onClick={(event) => {
+                        onClickLinks(event, link.href);
+                        setIsMenuOpen(false);
+                     }}
+                  >
+                     <Typography
+                        variant="h6"
+                        component="div"
+                        sx={{
+                           fontFamily: "Open Sans",
+                           fontWeight: 500,
+                           fontSize: "1rem",
+                           color: "text.secondary",
+                        }}
+                     >
+                        {link.name}
+                     </Typography>
+                  </Link>
+               ))}
+            </Box>
          </Drawer>
+
          <Box
             component="main"
             sx={{

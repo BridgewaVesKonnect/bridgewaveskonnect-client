@@ -1,3 +1,5 @@
+"use client";
+import Initialize from "./Initialize/Initialize";
 import Provider from "./Provider/Provider";
 
-export { Provider };
+export { Initialize, Provider };

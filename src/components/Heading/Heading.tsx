@@ -1,5 +1,7 @@
+import { env } from "@/src/config";
 import { Box, Button, Typography } from "@/src/html";
 import { forwardRef, SyntheticEvent } from "react";
+
 const Heading = forwardRef<HTMLDivElement, {}>((_, ref) => {
    const bookConsultationHandler = (event: SyntheticEvent) => {
       event.preventDefault();
@@ -152,7 +154,7 @@ const Heading = forwardRef<HTMLDivElement, {}>((_, ref) => {
                marginLeft: 4,
                width: "100%",
                height: "100%",
-               maxWidth: "700px",
+               maxWidth: "500px",
                margin: "0 auto",
             }}
          >
@@ -163,9 +165,8 @@ const Heading = forwardRef<HTMLDivElement, {}>((_, ref) => {
                   height: "100%",
                   objectFit: "contain",
                   marginTop: 85,
-                  opacity: 0.5,
                }}
-               src="https://bridgewaveskonnect.com/static/images/heading.jpg"
+               src={`${env.origin}/static/images/heading.gif`}
             />
          </Box>
       </Box>

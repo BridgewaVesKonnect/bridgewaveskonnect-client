@@ -1,4 +1,6 @@
+import { SplashScreen } from "@/src/components";
 import { Semantic } from "@/src/layout";
+import { State } from "@/src/state/store/store";
 import CircleIcon from "@mui/icons-material/Circle";
 import HomeWorkOutlinedIcon from "@mui/icons-material/HomeWorkOutlined";
 import InsertDriveFileOutlinedIcon from "@mui/icons-material/InsertDriveFileOutlined";
@@ -23,8 +25,11 @@ import {
    Stack,
    Typography,
 } from "@mui/material";
-import { useState } from "react";
+import { useRef, useState } from "react";
+import { useSelector } from "react-redux";
 const Career = () => {
+   const overviewRef = useRef<HTMLDivElement>(null);
+   const { innerHeight } = useSelector((state: State) => state.ui);
    const jobs = [
       {
          posted: "3 days ago",
@@ -358,14 +363,18 @@ const Career = () => {
 
    const selectJobs = (id: number) => {
       if (id === activeIndex) return;
+
+      overviewRef.current?.scrollTo(0, 0);
+
       setActiveIndex(id);
    };
-   return (
+   return innerHeight ? (
       <Semantic>
          <Box
             sx={{
                overflow: "hidden",
                mt: 9,
+               maxHeight: innerHeight - 80,
             }}
          >
             <Box
@@ -506,6 +515,9 @@ const Career = () => {
                      flex: 1,
                      overflow: "hidden",
                      width: "100%",
+                     maxHeight: innerHeight - 150,
+                     overflowY: "auto",
+                     pr: 2,
                   }}
                >
                   {jobs.map((job, index) => (
@@ -656,8 +668,22 @@ const Career = () => {
                      </Box>
                   ))}
                </Box>
-               <Box sx={{ p: 4, borderRadius: 3, overflow: "hidden", flex: 2 }}>
-                  <Grid container justifyContent="space-between" alignItems="center">
+               <Box
+                  sx={{
+                     borderRadius: 3,
+                     overflow: "hidden",
+                     flex: 2,
+                     border: { xs: "none", sm: "none", md: "1px solid #eee" },
+                  }}
+               >
+                  <Grid
+                     container
+                     justifyContent="space-between"
+                     alignItems="center"
+                     sx={{
+                        p: 4,
+                     }}
+                  >
                      <Typography
                         variant="h5"
                         fontWeight="bold"
@@ -676,7 +702,14 @@ const Career = () => {
                      </Stack>
                   </Grid>
 
-                  <Stack direction="row" spacing={2} mt={2} mb={2}>
+                  <Stack
+                     direction="row"
+                     spacing={2}
+                     mb={3}
+                     sx={{
+                        px: 4,
+                     }}
+                  >
                      <Chip
                         icon={<LocationOnIcon />}
                         label={jobs[activeIndex].location}
@@ -716,163 +749,78 @@ const Career = () => {
                         }}
                      />
                   </Stack>
-
-                  <Box mt={2}>
-                     <Typography
-                        variant="subtitle1"
-                        fontWeight="bold"
+                  <Box
+                     ref={overviewRef}
+                     sx={{
+                        borderTop: "1px solid #eee",
+                        px: 4,
+                        py: 1,
+                        maxHeight: innerHeight - 305,
+                        overflowY: "auto",
+                     }}
+                  >
+                     <Box
                         sx={{
-                           color: "text.secondary",
-                           fontFamily: "Open Sans",
+                           paddingTop: 2,
                         }}
                      >
-                        Overview:
-                     </Typography>
-                     {jobs[activeIndex].overview.map((item, index) => (
-                        <Box key={index}>
-                           <Typography
-                              sx={{
-                                 color: "text.secondary",
-                                 fontFamily: "Open Sans",
-                              }}
-                           >
-                              <strong>Job Title:</strong> {item.jobTitle}
-                           </Typography>
-                           <Typography
-                              sx={{
-                                 color: "text.secondary",
-                                 fontFamily: "Open Sans",
-                              }}
-                           >
-                              <strong>Location:</strong> {item.location}
-                           </Typography>
-                           <Typography
-                              sx={{
-                                 color: "text.secondary",
-                                 fontFamily: "Open Sans",
-                              }}
-                           >
-                              <strong>Rate:</strong> {item.rate}
-                           </Typography>
-                           <Typography
-                              sx={{
-                                 color: "text.secondary",
-                                 fontFamily: "Open Sans",
-                              }}
-                           >
-                              <strong>Schedule:</strong> {item.schedule}
-                           </Typography>
-
-                           <Typography
-                              sx={{
-                                 color: "text.secondary",
-                                 fontFamily: "Open Sans",
-                              }}
-                           >
-                              <strong>Job Type:</strong> {jobs[activeIndex].jobType}
-                           </Typography>
-                        </Box>
-                     ))}
-                  </Box>
-
-                  <Box mt={3}>
-                     <Typography
-                        variant="subtitle1"
-                        fontWeight="bold"
-                        sx={{
-                           color: "text.secondary",
-                           fontFamily: "Open Sans",
-                        }}
-                     >
-                        Overview:
-                     </Typography>
-                     <Typography
-                        sx={{
-                           color: "text.secondary",
-                           fontFamily: "Open Sans",
-                        }}
-                     >
-                        {jobs[activeIndex].jobDescription}
-                     </Typography>
-                  </Box>
-
-                  {jobs[activeIndex].keyResponsibilities.length > 0 && (
-                     <Box mt={3}>
                         <Typography
                            variant="subtitle1"
                            fontWeight="bold"
                            sx={{
                               color: "text.secondary",
                               fontFamily: "Open Sans",
-                              fontSize: "1.2rem",
-                              fontStyle: "italic",
                            }}
                         >
-                           Key Responsibilities
+                           Overview:
                         </Typography>
-                        {jobs[activeIndex].keyResponsibilities.map((section, index) => (
-                           <Box
-                              key={index}
-                              sx={{
-                                 marginLeft: 2,
-                              }}
-                           >
+                        {jobs[activeIndex].overview.map((item, index) => (
+                           <Box key={index}>
                               <Typography
-                                 variant="subtitle1"
-                                 fontWeight="bold"
                                  sx={{
                                     color: "text.secondary",
                                     fontFamily: "Open Sans",
-                                    fontSize: "1.2rem",
-                                    fontStyle: "italic",
                                  }}
                               >
-                                 {index + 1}. {section.title}
+                                 <strong>Job Title:</strong> {item.jobTitle}
                               </Typography>
-                              <List
+                              <Typography
                                  sx={{
-                                    pl: 2,
-                                    py: "3px",
+                                    color: "text.secondary",
+                                    fontFamily: "Open Sans",
                                  }}
                               >
-                                 {section.Requirements.map((item, index) => (
-                                    <ListItem key={index} sx={{ py: "3px" }}>
-                                       <ListItemText
-                                          primary={
-                                             <Box
-                                                sx={{
-                                                   display: "flex",
-                                                   alignItems: "center",
-                                                   justifyContent: "start",
-                                                   gap: "10px",
-                                                }}
-                                             >
-                                                <RadioButtonUncheckedIcon
-                                                   sx={{
-                                                      color: "text.secondary",
-                                                      fontSize: "0.7rem",
-                                                   }}
-                                                />{" "}
-                                                <Typography
-                                                   sx={{
-                                                      color: "text.secondary",
-                                                      fontFamily: "Open Sans",
-                                                   }}
-                                                >
-                                                   {item}
-                                                </Typography>
-                                             </Box>
-                                          }
-                                       />
-                                    </ListItem>
-                                 ))}
-                              </List>
+                                 <strong>Location:</strong> {item.location}
+                              </Typography>
+                              <Typography
+                                 sx={{
+                                    color: "text.secondary",
+                                    fontFamily: "Open Sans",
+                                 }}
+                              >
+                                 <strong>Rate:</strong> {item.rate}
+                              </Typography>
+                              <Typography
+                                 sx={{
+                                    color: "text.secondary",
+                                    fontFamily: "Open Sans",
+                                 }}
+                              >
+                                 <strong>Schedule:</strong> {item.schedule}
+                              </Typography>
+
+                              <Typography
+                                 sx={{
+                                    color: "text.secondary",
+                                    fontFamily: "Open Sans",
+                                 }}
+                              >
+                                 <strong>Job Type:</strong> {jobs[activeIndex].jobType}
+                              </Typography>
                            </Box>
                         ))}
                      </Box>
-                  )}
 
-                  {jobs[activeIndex].Qualifications.length > 0 && (
                      <Box mt={3}>
                         <Typography
                            variant="subtitle1"
@@ -880,120 +828,223 @@ const Career = () => {
                            sx={{
                               color: "text.secondary",
                               fontFamily: "Open Sans",
-                              fontSize: "1.2rem",
-                              fontStyle: "italic",
                            }}
                         >
-                           Qualifications:
+                           Overview:
                         </Typography>
-                        <List sx={{ pl: 2, py: "3px" }}>
-                           {jobs[activeIndex].Qualifications.map((item, index) => (
-                              <ListItem key={index} sx={{ py: "3px" }}>
-                                 <ListItemText
-                                    primary={
-                                       <Box
-                                          sx={{
-                                             display: "flex",
-                                             alignItems: "center",
-                                             justifyContent: "start",
-                                             gap: "10px",
-                                          }}
-                                       >
-                                          <CircleIcon
-                                             sx={{
-                                                color: "text.secondary",
-                                                fontSize: "0.6rem",
-                                             }}
-                                          />{" "}
-                                          <Typography
-                                             sx={{
-                                                color: "text.secondary",
-                                                fontFamily: "Open Sans",
-                                             }}
-                                          >
-                                             {" "}
-                                             {item}
-                                          </Typography>
-                                       </Box>
-                                    }
-                                 />
-                              </ListItem>
-                           ))}
-                        </List>
+                        <Typography
+                           sx={{
+                              color: "text.secondary",
+                              fontFamily: "Open Sans",
+                           }}
+                        >
+                           {jobs[activeIndex].jobDescription}
+                        </Typography>
                      </Box>
-                  )}
-                  {jobs[activeIndex].keyPerformanceIndicators.length > 0 && (
-                     <Box mt={3}>
-                        <Typography
-                           variant="subtitle1"
-                           fontWeight="bold"
-                           sx={{
-                              color: "text.secondary",
-                              fontFamily: "Open Sans",
-                              fontSize: "1.2rem",
-                              fontStyle: "italic",
-                           }}
-                        >
-                           Key Performance Indicators (KPIs)
-                        </Typography>
-                        <List sx={{ pl: 2, py: "3px" }}>
-                           {jobs[activeIndex].keyPerformanceIndicators.map(
+
+                     {jobs[activeIndex].keyResponsibilities.length > 0 && (
+                        <Box mt={3}>
+                           <Typography
+                              variant="subtitle1"
+                              fontWeight="bold"
+                              sx={{
+                                 color: "text.secondary",
+                                 fontFamily: "Open Sans",
+                                 fontSize: "1.2rem",
+                                 fontStyle: "italic",
+                              }}
+                           >
+                              Key Responsibilities
+                           </Typography>
+                           {jobs[activeIndex].keyResponsibilities.map(
                               (section, index) => (
-                                 <Box key={index}>
+                                 <Box
+                                    key={index}
+                                    sx={{
+                                       marginLeft: 2,
+                                    }}
+                                 >
                                     <Typography
+                                       variant="subtitle1"
+                                       fontWeight="bold"
                                        sx={{
                                           color: "text.secondary",
                                           fontFamily: "Open Sans",
-                                          fontWeight: "bold",
+                                          fontSize: "1.2rem",
+                                          fontStyle: "italic",
                                        }}
                                     >
                                        {index + 1}. {section.title}
                                     </Typography>
-                                    {section.Requirements.map((item, index) => (
-                                       <ListItem
-                                          key={index}
-                                          sx={{ py: 0, paddingLeft: 4 }}
-                                       >
-                                          <ListItemText
-                                             primary={
-                                                <Box
-                                                   sx={{
-                                                      display: "flex",
-                                                      alignItems: "center",
-                                                      justifyContent: "start",
-                                                      gap: "10px",
-                                                   }}
-                                                >
-                                                   <CircleIcon
+                                    <List
+                                       sx={{
+                                          pl: 2,
+                                          py: "3px",
+                                       }}
+                                    >
+                                       {section.Requirements.map((item, index) => (
+                                          <ListItem key={index} sx={{ py: "3px" }}>
+                                             <ListItemText
+                                                primary={
+                                                   <Box
                                                       sx={{
-                                                         color: "text.secondary",
-                                                         fontSize: "0.6rem",
-                                                      }}
-                                                   />{" "}
-                                                   <Typography
-                                                      sx={{
-                                                         color: "text.secondary",
-                                                         fontFamily: "Open Sans",
+                                                         display: "flex",
+                                                         alignItems: "center",
+                                                         justifyContent: "start",
+                                                         gap: "10px",
                                                       }}
                                                    >
-                                                      {" "}
-                                                      {item}
-                                                   </Typography>
-                                                </Box>
-                                             }
-                                          />
-                                       </ListItem>
-                                    ))}
+                                                      <RadioButtonUncheckedIcon
+                                                         sx={{
+                                                            color: "text.secondary",
+                                                            fontSize: "0.7rem",
+                                                         }}
+                                                      />{" "}
+                                                      <Typography
+                                                         sx={{
+                                                            color: "text.secondary",
+                                                            fontFamily: "Open Sans",
+                                                         }}
+                                                      >
+                                                         {item}
+                                                      </Typography>
+                                                   </Box>
+                                                }
+                                             />
+                                          </ListItem>
+                                       ))}
+                                    </List>
                                  </Box>
                               ),
                            )}
-                        </List>
-                     </Box>
-                  )}
+                        </Box>
+                     )}
+
+                     {jobs[activeIndex].Qualifications.length > 0 && (
+                        <Box mt={3}>
+                           <Typography
+                              variant="subtitle1"
+                              fontWeight="bold"
+                              sx={{
+                                 color: "text.secondary",
+                                 fontFamily: "Open Sans",
+                                 fontSize: "1.2rem",
+                                 fontStyle: "italic",
+                              }}
+                           >
+                              Qualifications:
+                           </Typography>
+                           <List sx={{ pl: 2, py: "3px" }}>
+                              {jobs[activeIndex].Qualifications.map((item, index) => (
+                                 <ListItem key={index} sx={{ py: "3px" }}>
+                                    <ListItemText
+                                       primary={
+                                          <Box
+                                             sx={{
+                                                display: "flex",
+                                                alignItems: "center",
+                                                justifyContent: "start",
+                                                gap: "10px",
+                                             }}
+                                          >
+                                             <CircleIcon
+                                                sx={{
+                                                   color: "text.secondary",
+                                                   fontSize: "0.6rem",
+                                                }}
+                                             />{" "}
+                                             <Typography
+                                                sx={{
+                                                   color: "text.secondary",
+                                                   fontFamily: "Open Sans",
+                                                }}
+                                             >
+                                                {" "}
+                                                {item}
+                                             </Typography>
+                                          </Box>
+                                       }
+                                    />
+                                 </ListItem>
+                              ))}
+                           </List>
+                        </Box>
+                     )}
+                     {jobs[activeIndex].keyPerformanceIndicators.length > 0 && (
+                        <Box mt={3}>
+                           <Typography
+                              variant="subtitle1"
+                              fontWeight="bold"
+                              sx={{
+                                 color: "text.secondary",
+                                 fontFamily: "Open Sans",
+                                 fontSize: "1.2rem",
+                                 fontStyle: "italic",
+                              }}
+                           >
+                              Key Performance Indicators (KPIs)
+                           </Typography>
+                           <List sx={{ pl: 2, py: "3px" }}>
+                              {jobs[activeIndex].keyPerformanceIndicators.map(
+                                 (section, index) => (
+                                    <Box key={index}>
+                                       <Typography
+                                          sx={{
+                                             color: "text.secondary",
+                                             fontFamily: "Open Sans",
+                                             fontWeight: "bold",
+                                          }}
+                                       >
+                                          {index + 1}. {section.title}
+                                       </Typography>
+                                       {section.Requirements.map((item, index) => (
+                                          <ListItem
+                                             key={index}
+                                             sx={{ py: 0, paddingLeft: 4 }}
+                                          >
+                                             <ListItemText
+                                                primary={
+                                                   <Box
+                                                      sx={{
+                                                         display: "flex",
+                                                         alignItems: "center",
+                                                         justifyContent: "start",
+                                                         gap: "10px",
+                                                      }}
+                                                   >
+                                                      <CircleIcon
+                                                         sx={{
+                                                            color: "text.secondary",
+                                                            fontSize: "0.6rem",
+                                                         }}
+                                                      />{" "}
+                                                      <Typography
+                                                         sx={{
+                                                            color: "text.secondary",
+                                                            fontFamily: "Open Sans",
+                                                         }}
+                                                      >
+                                                         {" "}
+                                                         {item}
+                                                      </Typography>
+                                                   </Box>
+                                                }
+                                             />
+                                          </ListItem>
+                                       ))}
+                                    </Box>
+                                 ),
+                              )}
+                           </List>
+                        </Box>
+                     )}
+                  </Box>
                </Box>
             </Box>
          </Box>
       </Semantic>
+   ) : (
+      <SplashScreen />
    );
 };
 

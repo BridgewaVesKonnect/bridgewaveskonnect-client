@@ -1,4 +1,4 @@
-import { Provider } from "@/src/state";
+import { Initialize, Provider } from "@/src/state";
 import { ThemeRepository } from "@/src/theme";
 
 export default function RootLayout({
@@ -26,7 +26,9 @@ export default function RootLayout({
          </head>
          <body>
             <Provider>
-               <ThemeRepository>{children}</ThemeRepository>
+               <Initialize>
+                  <ThemeRepository>{children}</ThemeRepository>
+               </Initialize>
             </Provider>
          </body>
       </html>

@@ -1,3 +1,4 @@
+"use client";
 import Alert from "./Alert/Alert";
 import AppBar from "./AppBar/AppBar";
 import AutoComplete from "./Autocomplete/Autocomplete";

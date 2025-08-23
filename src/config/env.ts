@@ -1,5 +1,5 @@
 const env = {
-   apiHost: process.env.API_HOST,
+   origin: process.env.ORIGIN,
 };
 
 export default env;

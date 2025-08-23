@@ -62,7 +62,7 @@ const Footer = () => {
                      fontFamily: "Open Sans",
                   }}
                >
-                  BRIDGEWAVES KONNECT
+                  BridgewaVes Konnect
                </Typography>
 
                <Typography
@@ -74,7 +74,7 @@ const Footer = () => {
                      fontFamily: "Open Sans",
                   }}
                >
-                  Your partner in success, connecting you with the best virtual talent
+                  Bridging gaps, Empowering growth.
                </Typography>
             </Box>
             <Box

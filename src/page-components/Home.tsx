@@ -5,12 +5,16 @@ import {
    Heading,
    HowItWorks,
    OurService,
+   SplashScreen,
    WhyChooseUs,
 } from "@/src/components";
 import { Semantic } from "@/src/layout";
+import { State } from "@/src/state/store/store";
+import { useSelector } from "react-redux";
 
 const Home = () => {
-   return (
+   const { innerHeight } = useSelector((state: State) => state.ui);
+   return innerHeight ? (
       <Semantic>
          <Heading />
          <WhyChooseUs />
@@ -20,6 +24,8 @@ const Home = () => {
          <BookConsultation />
          <Footer />
       </Semantic>
+   ) : (
+      <SplashScreen />
    );
 };
 
