@@ -1,15 +1,17 @@
+import Calendly from "@/src/components/Calendly/Calendly";
 import { Box, Button, Typography } from "@/src/html";
-import { forwardRef, SyntheticEvent } from "react";
+import { SyntheticEvent, useState } from "react";
 
-const Heading = forwardRef<HTMLDivElement, {}>((_, ref) => {
+const Heading = () => {
+   const [openCalendly, setOpenCalendly] = useState(false);
+
    const bookConsultationHandler = (event: SyntheticEvent) => {
       event.preventDefault();
-      // const bookConsultationSection = document.getElementById(
-      //    "bookConsultation",
-      // ) as HTMLDivElement;
-      // if (bookConsultationSection) {
-      //    bookConsultationSection.scrollIntoView({ behavior: "smooth", block: "center" });
-      // }
+      setOpenCalendly(true);
+   };
+
+   const handleCalendlyClose = () => {
+      setOpenCalendly(false);
    };
    return (
       <Box
@@ -164,12 +166,14 @@ const Heading = forwardRef<HTMLDivElement, {}>((_, ref) => {
                   height: "100%",
                   objectFit: "contain",
                   marginTop: 85,
+                  opacity: 0.7,
                }}
-               src={`https://bridgewaveskonnect.com/static/images/heading.gif`}
+               src={`https://bridgewaveskonnect.com/static/images/business-network.png`}
             />
          </Box>
+         <Calendly open={openCalendly} onClose={handleCalendlyClose} />
       </Box>
    );
-});
+};
 
 export default Heading;

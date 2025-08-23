@@ -1,6 +1,7 @@
 "use client";
 import AboutUs from "./AboutUs/AboutUs";
 import BookConsultation from "./BookConsultation/BookConsultation";
+import Calendly from "./Calendly/Calendly";
 import Footer from "./Footer/Footer";
 import Heading from "./Heading/Heading";
 import HowItWorks from "./HowItWorks/HowItWorks";
@@ -11,6 +12,7 @@ import WhyChooseUs from "./WhyChooseUs/WhyChooseUs";
 export {
    AboutUs,
    BookConsultation,
+   Calendly,
    Footer,
    Heading,
    HowItWorks,

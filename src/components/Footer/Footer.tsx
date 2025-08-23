@@ -484,6 +484,20 @@ const Footer = () => {
                      >
                         Australia
                      </Typography>
+                     <Typography
+                        variant="h5"
+                        sx={{
+                           fontSize: "1rem",
+                           color: "text.secondary",
+                           display: "flex",
+                           alignItems: "center",
+                           gap: "8px",
+                           fontWeight: 500,
+                           fontFamily: "Open Sans",
+                        }}
+                     >
+                        United States
+                     </Typography>
                   </Box>
                </Box>
             </Box>

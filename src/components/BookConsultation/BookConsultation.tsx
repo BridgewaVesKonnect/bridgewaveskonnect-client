@@ -251,7 +251,12 @@ const BookConsultation = () => {
                                  />
                               ) : item.type === "autocomplete" ? (
                                  <AutoComplete
-                                    options={["Philippines", "Canada", "Austrilla"]}
+                                    options={[
+                                       "Philippines",
+                                       "Canada",
+                                       "Austrilla",
+                                       "United States",
+                                    ]}
                                     renderInput={(params) => (
                                        <TextField
                                           variant="outlined"

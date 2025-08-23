@@ -23,6 +23,8 @@ export default function RootLayout({
                href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap"
                rel="stylesheet"
             />
+
+            <link rel="icon" href="http://localhost:3000/static/images/favicon.ico" />
          </head>
          <body>
             <Provider>

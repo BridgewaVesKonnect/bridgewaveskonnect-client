@@ -1,4 +1,3 @@
-import { env } from "@/src/config";
 import { Box, Img } from "@/src/html";
 
 const SplashScreen = () => {
@@ -21,7 +20,7 @@ const SplashScreen = () => {
          }}
       >
          <Img
-            src={`${env.origin}/static/images/logo.webp`}
+            src={`https://bridgewaveskonnect.com/static/images/logo.webp`}
             alt="BridgeWaves Konnect"
             style={{
                width: "50px",
