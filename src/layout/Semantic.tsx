@@ -1,4 +1,3 @@
-import { env } from "@/src/config";
 import { AppBar, Box, Drawer, Img, Link, Toolbar, Typography } from "@/src/html";
 import { State } from "@/src/state/store/store";
 import { Close, Menu } from "@mui/icons-material";
@@ -100,7 +99,7 @@ const Semantic = ({ children }: { children: React.ReactNode }) => {
                               height: "100%",
                               objectFit: "contain",
                            }}
-                           src={`${env.origin}/static/images/logo.webp`}
+                           src={`https://bridgewaveskonnect.com/static/images/logo.webp`}
                         />
                      </Box>
                      <Box

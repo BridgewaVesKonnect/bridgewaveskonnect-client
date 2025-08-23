@@ -1,4 +1,3 @@
-import { env } from "@/src/config";
 import { Box, Button, Typography } from "@/src/html";
 import { forwardRef, SyntheticEvent } from "react";
 
@@ -166,7 +165,7 @@ const Heading = forwardRef<HTMLDivElement, {}>((_, ref) => {
                   objectFit: "contain",
                   marginTop: 85,
                }}
-               src={`${env.origin}/static/images/heading.gif`}
+               src={`https://bridgewaveskonnect.com/static/images/heading.gif`}
             />
          </Box>
       </Box>
