@@ -9,9 +9,10 @@ import {
    DialogActions,
    DialogContent,
    DialogTitle,
+   Img,
 } from "@/src/html";
 import { Close, CloudUpload } from "@mui/icons-material";
-import { IconButton } from "@mui/material";
+import { IconButton, Select, MenuItem, InputAdornment, Divider } from "@mui/material";
 import React, { ChangeEvent, DragEvent, FormEvent, useState } from "react";
 
 interface ResumeModalProps {
@@ -34,6 +35,25 @@ interface FormData {
 }
 
 const ResumeModal: React.FC<ResumeModalProps> = ({ open, onClose }) => {
+   const flags = [
+      { code: "PH", label: "Philippines", phone: "+63" },
+      {
+         code: "CA",
+         label: "Canada",
+         phone: "+1",
+      },
+      {
+         code: "AU",
+         label: "Australia",
+         phone: "+61",
+      },
+      {
+         code: "US",
+         label: "United States",
+         phone: "+1",
+      },
+   ];
+
    const [formData, setFormData] = useState<FormData[]>([
       {
          name: "fullName",
@@ -54,7 +74,7 @@ const ResumeModal: React.FC<ResumeModalProps> = ({ open, onClose }) => {
          rules: "required|phone",
          error: false,
          multiline: false,
-         type: "text",
+         type: "phone",
          maxLength: 15,
          disabled: false,
          value: "",
@@ -174,11 +194,113 @@ const ResumeModal: React.FC<ResumeModalProps> = ({ open, onClose }) => {
                                  },
                               }}
                               sx={{
-                                 ":hover .MuiOutlinedInput-notchedOutline": {
+                                 "&:hover .MuiOutlinedInput-notchedOutline": {
                                     borderColor: "primary.main",
                                  },
                               }}
                            />
+                        ) : field.type === "phone" ? (
+                           <Box sx={{ display: "flex", position: "relative" }}>
+                              <TextField
+                                 key={field.name}
+                                 name={field.name}
+                                 label={field.label}
+                                 onChange={handleChange}
+                                 fullWidth
+                                 error={field.error}
+                                 helperText={field.errorMessage}
+                                 type={field.type}
+                                 disabled={field.disabled}
+                                 variant="outlined"
+                                 value={field.value}
+                                 slotProps={{
+                                    htmlInput: {
+                                       maxLength: field.maxLength,
+                                    },
+                                    input: {
+                                       startAdornment: (
+                                          <InputAdornment position="start">
+                                             <Select
+                                                defaultValue="PH"
+                                                sx={{
+                                                   "mb": 1,
+                                                   "& .MuiOutlinedInput-notchedOutline": {
+                                                      border: "none",
+                                                   },
+                                                   "&:hover .MuiOutlinedInput-notchedOutline":
+                                                      {
+                                                         border: "none",
+                                                      },
+                                                   "&.Mui-focused .MuiOutlinedInput-notchedOutline":
+                                                      {
+                                                         border: "none",
+                                                      },
+                                                   "color": "text.secondary",
+                                                   "fontFamily": "Open Sans, sans-serif",
+                                                   "minWidth": 190,
+                                                   "maxWidth": 190,
+                                                   "border": "none",
+                                                   "& .MuiInputBase-root": {
+                                                      border: "none",
+                                                   },
+                                                   "& .MuiSelect-select": {
+                                                      pl: 0,
+                                                      pr: 0,
+                                                   },
+                                                }}
+                                             >
+                                                {flags.map((option) => (
+                                                   <MenuItem
+                                                      key={option.code}
+                                                      value={option.code}
+                                                      sx={{
+                                                         display: "flex",
+                                                         alignItems: "center",
+                                                      }}
+                                                   >
+                                                      <Img
+                                                         src={`https://flagcdn.com/w20/${option.code.toLowerCase()}.png`}
+                                                         srcSet={`https://flagcdn.com/w40/${option.code.toLowerCase()}.png 2x`}
+                                                         alt=""
+                                                         loading="lazy"
+                                                         width="20"
+                                                         style={{
+                                                            marginLeft: 8,
+                                                            verticalAlign: "middle",
+                                                         }}
+                                                      />
+
+                                                      <Typography
+                                                         variant="body1"
+                                                         component="span"
+                                                         sx={{
+                                                            ml: 1,
+                                                            fontFamily:
+                                                               "Open Sans, sans-serif",
+                                                            color: "text.secondary",
+                                                         }}
+                                                      >
+                                                         {option.label}
+                                                      </Typography>
+                                                   </MenuItem>
+                                                ))}
+                                             </Select>
+                                             <Divider
+                                                orientation="vertical"
+                                                flexItem
+                                                sx={{ mx: 1 }}
+                                             />
+                                          </InputAdornment>
+                                       ),
+                                    },
+                                 }}
+                                 sx={{
+                                    "&:hover .MuiOutlinedInput-notchedOutline": {
+                                       borderColor: "primary.main",
+                                    },
+                                 }}
+                              />
+                           </Box>
                         ) : (
                            <Box
                               onDrop={handleFileDrop}

@@ -5,7 +5,7 @@ const ContentSecurityPolicy = `
   script-src 'self' blob: 'unsafe-eval' 'unsafe-inline' https://www.googletagmanager.com;
   connect-src 'self' ${process.env.API_WEBSOCKET_HOST} ${process.env.API_HOST} https://www.google-analytics.com blob:;
   font-src 'self' data: https://fonts.gstatic.com;
-  img-src 'self' blob: data: ${process.env.API_HOST} https://lh3.googleusercontent.com https://bridgewaveskonnect.com;
+  img-src 'self' blob: data: ${process.env.API_HOST} https://lh3.googleusercontent.com https://bridgewaveskonnect.com https://flagcdn.com;
   style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
   frame-ancestors 'self';
   form-action 'self';
