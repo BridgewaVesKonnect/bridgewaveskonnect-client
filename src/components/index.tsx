@@ -6,6 +6,7 @@ import Footer from "./Footer/Footer";
 import Heading from "./Heading/Heading";
 import HowItWorks from "./HowItWorks/HowItWorks";
 import OurService from "./OurService/OurService";
+import ResumeModal from "./ResumeModal/ResumeModal";
 import SplashScreen from "./SplashScreen/SplashScreen";
 import WhyChooseUs from "./WhyChooseUs/WhyChooseUs";
 
@@ -17,6 +18,7 @@ export {
    Heading,
    HowItWorks,
    OurService,
+   ResumeModal,
    SplashScreen,
    WhyChooseUs,
 };

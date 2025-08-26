@@ -1,4 +1,4 @@
-import { SplashScreen } from "@/src/components";
+import { ResumeModal, SplashScreen } from "@/src/components";
 import { Semantic } from "@/src/layout";
 import { State } from "@/src/state/store/store";
 import CircleIcon from "@mui/icons-material/Circle";
@@ -27,6 +27,7 @@ import {
 } from "@mui/material";
 import { useRef, useState } from "react";
 import { useSelector } from "react-redux";
+
 const Career = () => {
    const overviewRef = useRef<HTMLDivElement>(null);
    const { innerHeight } = useSelector((state: State) => state.ui);
@@ -361,6 +362,8 @@ const Career = () => {
    ];
    const [activeIndex, setActiveIndex] = useState(0);
 
+   const [isOpen, setIsOpen] = useState(false);
+
    const selectJobs = (id: number) => {
       if (id === activeIndex) return;
 
@@ -368,6 +371,11 @@ const Career = () => {
 
       setActiveIndex(id);
    };
+
+   const onClose = () => {
+      setIsOpen(false);
+   };
+
    return innerHeight ? (
       <Semantic>
          <Box
@@ -696,7 +704,11 @@ const Career = () => {
                      </Typography>
                      <Stack direction="row" spacing={2}>
                         <Button variant="text">Share</Button>
-                        <Button variant="contained" color="warning">
+                        <Button
+                           variant="contained"
+                           color="warning"
+                           onClick={() => setIsOpen(true)}
+                        >
                            Apply Now
                         </Button>
                      </Stack>
@@ -1042,6 +1054,7 @@ const Career = () => {
                </Box>
             </Box>
          </Box>
+         <ResumeModal open={isOpen} onClose={onClose} />
       </Semantic>
    ) : (
       <SplashScreen />
